@@ -30,7 +30,8 @@ def probabilisticSlits(slits, divisions, targets):
 
 
 def quantumSlits(slits, divisions, targets):
-    # las primera divisiones ahora seran la raiz del inverso de los posibles caminos para que se cumpla que |c|^2 = 1/slits
+    # las primera divisiones ahora seran la raiz del inverso de los posibles caminos para que se cumpla que |c|^2 = 1/slits,
+    # para que tambien al hacer la matriz de probabilidades esta sea doblemente estocastica
     first_probable_path = math.sqrt(1/slits)
     matrix_dynamics = np.array([[0 + 0j for i in range(slits + targets + 1)]for j in range(slits + targets + 1)])
     for i in range(len(matrix_dynamics)):
@@ -57,11 +58,3 @@ def printImage(state):
     plt.title('Distribution after k clicks')
 
     plt.show()
-
-
-slits = 2
-divisions = [[1, 3, 1/np.sqrt(3)], [1, 4, 1/np.sqrt(3)],
-                     [1, 5, 1/np.sqrt(3)], [2, 5, -1/np.sqrt(3)],
-                     [2, 6, 1/np.sqrt(3)], [2, 7, 1/np.sqrt(3)]]
-targets = 5
-print(quantumSlits(slits, divisions, targets))
